@@ -57,8 +57,9 @@ export function Header() {
       <div className="wrap flex h-18 items-center justify-between max-md:h-15">
         <a
           href="#top"
-          className="rounded-xs text-[16px] font-semibold tracking-[-.01em] focus-ring"
+          className="inline-flex items-center gap-2.5 rounded-xs text-[17px] font-semibold tracking-[-.01em] focus-ring"
         >
+          <span aria-hidden="true" className="size-2.5 rounded-full bg-accent" />
           {site.name}
         </a>
 
@@ -86,7 +87,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="menu-movil"
               onClick={() => setOpen((value) => !value)}
-              className="hidden h-10 items-center gap-2 rounded-sm px-3.5 font-mono text-label leading-none uppercase text-ink inset-ring-1 inset-ring-line-control focus-ring max-md:inline-flex"
+              className="hidden h-10 items-center gap-2 rounded-full px-4 font-mono text-label leading-none uppercase text-ink inset-ring-1 inset-ring-line-control focus-ring max-md:inline-flex"
             >
               <Icon name={open ? "close" : "menu"} />
               <span>Menú</span>

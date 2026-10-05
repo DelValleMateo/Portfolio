@@ -7,6 +7,7 @@ import type { Copy } from "@/content/types";
 export const labelClass = {
   muted: "font-mono text-label uppercase text-ink-3",
   ink: "font-mono text-label uppercase text-ink",
+  accent: "font-mono text-label uppercase text-accent",
 } as const;
 
 export function Label({

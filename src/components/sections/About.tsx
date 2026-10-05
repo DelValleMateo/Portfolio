@@ -24,10 +24,11 @@ export function About() {
           ) : null}
           <figure
             aria-label="Ilustración de una traza terrestre satelital"
-            className="mt-2 overflow-hidden rounded-sm inset-ring-1 inset-ring-line"
+            data-reveal
+            className="mt-2 overflow-hidden rounded-lg bg-surface inset-ring-1 inset-ring-line"
           >
             <GroundTrack />
-            <figcaption className="flex justify-between border-t border-line px-3.5 py-2.5 font-mono text-[11px] leading-4 text-ink-3">
+            <figcaption className="flex justify-between border-t border-line px-5 py-3 font-mono text-[11px] leading-4 text-ink-3">
               <span>Traza terrestre ilustrativa</span>
               <span>CDU · i = 51,6°</span>
             </figcaption>
@@ -36,23 +37,22 @@ export function About() {
 
         <div className="col-[7/span_6] flex flex-col gap-12 max-lg:col-1">
           {about.groups.map((group) => (
-            <div key={group.title} className="flex flex-col gap-3">
-              <Label tone="ink">{group.title}</Label>
-              <ul>
+            <div key={group.title} data-reveal className="flex flex-col gap-5">
+              <Label>{group.title}</Label>
+              {/* Línea de tiempo: un punto de acento por ítem sobre un hilo vertical. */}
+              <ul className="relative flex flex-col gap-6 pl-7 before:absolute before:top-2 before:bottom-2 before:left-[5px] before:w-px before:bg-line-strong before:content-['']">
                 {group.items.map((item) => (
                   <li
                     key={item.what}
-                    className="grid grid-cols-[152px_1fr] gap-x-6 border-t border-line py-4 max-md:grid-cols-[minmax(0,1fr)] max-md:gap-y-1 max-md:py-3.5"
+                    className="relative flex flex-col gap-1.5 before:absolute before:top-[3px] before:-left-7 before:size-[11px] before:rounded-full before:bg-bg before:inset-ring-2 before:inset-ring-accent before:content-['']"
                   >
-                    <span className="pt-[3px] font-mono text-[12px] leading-5 text-ink-3">
+                    <span className="font-mono text-label uppercase text-accent">
                       {item.when}
                     </span>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-[17px] leading-[1.4] font-semibold tracking-[-.005em] text-ink">
-                        {item.what}
-                      </h4>
-                      <p className="text-small text-ink-2">{item.where}</p>
-                    </div>
+                    <h4 className="text-[20px] leading-[1.25] font-semibold tracking-[-.015em] text-ink max-md:text-[18px]">
+                      {item.what}
+                    </h4>
+                    <p className="text-small text-ink-2">{item.where}</p>
                   </li>
                 ))}
               </ul>

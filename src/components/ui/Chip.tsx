@@ -2,9 +2,9 @@ import { cn } from "@/lib/cn";
 import { SHOW_PENDING } from "@/components/ui/Pending";
 
 const chip =
-  "inline-flex h-[26px] items-center whitespace-nowrap rounded-xs border border-line-strong px-[9px] font-mono text-chip text-ink-2";
+  "inline-flex h-7 items-center whitespace-nowrap rounded-full border border-line-strong px-3 font-mono text-chip text-ink-2";
 const chipPending =
-  "inline-flex h-[26px] items-center whitespace-nowrap rounded-xs border border-dashed border-line-control px-[9px] font-mono text-chip text-ink-3";
+  "inline-flex h-7 items-center whitespace-nowrap rounded-full border border-dashed border-line-control px-3 font-mono text-chip text-ink-3";
 
 /** Lista de chips de stack. Sin ítems, solo se ve el pendiente (en desarrollo). */
 export function ChipList({

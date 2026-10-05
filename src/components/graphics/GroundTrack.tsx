@@ -49,7 +49,8 @@ function buildSegments() {
 const cls = {
   line: "stroke-grid",
   equator: "stroke-line-strong [stroke-dasharray:2_4]",
-  path: "fill-none stroke-ink-3 stroke-[1.25] [stroke-dasharray:4_4]",
+  path: "fill-none stroke-accent/60 stroke-[1.5] [stroke-dasharray:3_5]",
+  ring: "fill-none stroke-accent",
   pos: "fill-ink",
   cross: "stroke-ink",
   txt: "fill-ink-3 font-mono text-[9px] tracking-[.05em]",
@@ -98,6 +99,8 @@ export function GroundTrack() {
       ))}
 
       {/* estación: Concepción del Uruguay */}
+      <circle className={cls.ring} cx={f(sx)} cy={f(sy)} r="16" strokeOpacity="0.25" />
+      <circle className={cls.ring} cx={f(sx)} cy={f(sy)} r="9" strokeOpacity="0.5" />
       <line className={cls.cross} x1={f(sx - 7)} y1={f(sy)} x2={f(sx + 7)} y2={f(sy)} />
       <line className={cls.cross} x1={f(sx)} y1={f(sy - 7)} x2={f(sx)} y2={f(sy + 7)} />
       <circle className={cls.pos} cx={f(sx)} cy={f(sy)} r="2.5" />

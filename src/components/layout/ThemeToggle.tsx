@@ -24,7 +24,7 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label="Cambiar entre modo oscuro y claro"
-      className="inline-grid size-10 place-items-center rounded-sm text-ink inset-ring-1 inset-ring-line-control transition-shadow duration-150 hover:inset-ring-ink focus-ring"
+      className="inline-grid size-10 place-items-center rounded-full text-ink inset-ring-1 inset-ring-line-control transition-shadow duration-150 hover:inset-ring-ink focus-ring"
     >
       <Icon name="theme" />
     </button>

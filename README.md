@@ -2,7 +2,7 @@
 
 Sitio personal de una sola página. Next.js (App Router) · React 19 · TypeScript · Tailwind CSS v4.
 
-Diseño: oscuro por defecto, con modo claro; sobrio, con guiños al espacio (órbitas, grilla de coordenadas, telemetría). Tipografías: Albert Sans para texto y Martian Mono solo para metadatos.
+Diseño: oscuro por defecto, con modo claro; estilo «centro de control», con guiños al espacio (órbitas, radar, grilla de coordenadas, telemetría). Un solo acento ámbar (el coral queda solo para el «Costo» de los desafíos), tarjetas de 24 px y controles en píldora. Tipografías: Bricolage Grotesque para texto y JetBrains Mono solo para metadatos.
 
 ## Cómo correrlo
 
@@ -113,6 +113,18 @@ Lo que se ajusta, todo arriba de `OrbitSatellites.tsx`:
 **Movimiento reducido.** Con `prefers-reduced-motion: reduce` los satélites no se mueven (se pueden tocar igual). En Windows ese valor sale de *Configuración → Accesibilidad → Efectos visuales → Efectos de animación*: si está desactivado, el navegador reporta movimiento reducido y no vas a ver girar nada. Para probar sin tocar Windows: en Chrome, DevTools → ⋮ → Más herramientas → Renderización → «Emular la función multimedia CSS prefers-reduced-motion» → `no-preference`.
 
 Otros comportamientos: se detiene cuando el diagrama sale de pantalla y no da saltos al volver de una pestaña en segundo plano. Las etiquetas acompañan a cada satélite y se atenúan al pasar cerca del texto del hero (los bloques marcados con `data-orbit-avoid`, hoy la columna del copy en `Hero.tsx`); cuando dos etiquetas se cruzan, cede la del satélite que no está encendido. En mobile las etiquetas están ocultas, así que ahí solo se ven los puntos girando.
+
+## Animaciones de la interfaz
+
+Todas respetan `prefers-reduced-motion` (con movimiento reducido no se mueve nada) y ninguna esconde información sin JavaScript.
+
+| Qué | Dónde | Detalle |
+| --- | --- | --- |
+| Radar del hero | `OrbitDiagram.tsx` + `components.css` (`.radar-sweep`, `.cdu-ping`) | Un sector gira alrededor de CDU (10 s por vuelta) y la estación emite un pulso cada 3,6 s. Sin movimiento no se dibuja el barrido |
+| Nombre «decodificado» | `ScrambleText.tsx` (usado en `Hero.tsx`) | Las letras pasan por símbolos y se fijan de izquierda a derecha en 0,9 s. Una sola vez por sesión (`sessionStorage`) |
+| Aparición al scroll | `RevealOnScroll.tsx` + `[data-reveal]` en `components.css` | Cualquier elemento con `data-reveal` aparece al entrar en pantalla; `--i` escalona la entrada de a 70 ms |
+| Stack interactivo | `StackGrid.tsx` | Al pasar el mouse por una tecnología se enciende, en todas las tarjetas, el nombre de sus proyectos |
+| Puntos «en vivo» | `Telemetry.tsx`, `OtherProjects.tsx` | `motion-safe:animate-pulse` |
 
 ## Estilos: cómo está armado
 

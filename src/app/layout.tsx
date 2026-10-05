@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Albert_Sans, Martian_Mono } from "next/font/google";
+import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { site } from "@/content/site";
+import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
 import "./globals.css";
 
-const albertSans = Albert_Sans({
+// Fuente variable (peso 200–800): el eje de tamaño óptico ajusta el trazo en títulos grandes.
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-albert-sans",
+  axes: ["opsz"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 
 // Solo para metadatos: labels, coordenadas, chips.
-const martianMono = Martian_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: "--font-martian-mono",
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -47,12 +49,19 @@ export default function RootLayout({
       lang="es-AR"
       data-theme="dark"
       suppressHydrationWarning
-      className={`${albertSans.variable} ${martianMono.variable}`}
+      className={`${bricolage.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* Sin JavaScript no corre el observer de aparición: todo queda visible. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important}`}</style>
+        </noscript>
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <RevealOnScroll />
+      </body>
     </html>
   );
 }

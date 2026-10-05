@@ -152,6 +152,7 @@ export function CaseStudy({
 
         {shots.length > 0 ? (
           <div
+            data-reveal
             className={cn(
               "row-start-1 min-w-0",
               phone ? "max-xl:col-1 max-xl:row-start-2" : "max-lg:col-1 max-lg:row-start-2",

@@ -30,7 +30,7 @@ export function CopyEmailButton({ email }: { email: string }) {
     <button
       type="button"
       onClick={copy}
-      className="inline-flex h-8 items-center gap-1.5 rounded-xs px-2.5 font-mono text-label whitespace-nowrap text-ink uppercase inset-ring-1 inset-ring-line-control transition-shadow duration-150 hover:inset-ring-ink focus-ring"
+      className="inline-flex h-8 items-center gap-1.5 rounded-full px-3.5 font-mono text-label whitespace-nowrap text-ink uppercase inset-ring-1 inset-ring-line-control transition-shadow duration-150 hover:inset-ring-ink focus-ring"
     >
       <Icon name="copy" size={14} />
       <span aria-live="polite">

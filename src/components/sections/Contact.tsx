@@ -8,7 +8,7 @@ import { CopyEmailButton } from "@/components/sections/CopyEmailButton";
 import { labelClass } from "@/components/ui/Text";
 
 const miniButton =
-  "inline-flex h-8 items-center gap-1.5 rounded-xs px-2.5 font-mono text-label whitespace-nowrap text-ink uppercase inset-ring-1 inset-ring-line-control transition-shadow duration-150 hover:inset-ring-ink focus-ring";
+  "inline-flex h-8 items-center gap-1.5 rounded-full px-3.5 font-mono text-label whitespace-nowrap text-ink uppercase inset-ring-1 inset-ring-line-control transition-shadow duration-150 hover:inset-ring-ink focus-ring";
 
 const linkedinHandle = site.links.linkedin
   .replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, "")
@@ -26,11 +26,14 @@ export function Contact() {
     <Section id="contacto">
       <SectionHeader index="05 / 05" tag="Contacto" />
 
-      <div className="grid grid-cols-12 items-start gap-x-6 max-lg:grid-cols-1 max-lg:gap-y-12">
+      <div
+        data-reveal
+        className="grid grid-cols-12 items-start gap-x-6 rounded-xl bg-surface p-14 inset-ring-1 inset-ring-line-strong max-lg:grid-cols-1 max-lg:gap-y-12 max-lg:p-10 max-md:p-6"
+      >
         <div className="col-[1/span_6] flex flex-col items-start gap-7 max-lg:col-1">
           <h2 className="text-h2 max-md:text-h2-m">
             ¿Buscás a alguien <span className="whitespace-nowrap">full-stack</span> o
-            mobile? Hablemos.
+            mobile? <span className="text-accent">Hablemos.</span>
           </h2>
           <p className="max-w-[460px] text-body text-ink-2 max-md:text-body-m">
             Busco roles full-stack o mobile, en Argentina o remoto. Lo más rápido
@@ -41,7 +44,7 @@ export function Contact() {
           </Button>
         </div>
 
-        <ul className="col-[8/span_5] border-t border-ink max-lg:col-1">
+        <ul className="col-[8/span_5] border-t border-line-strong max-lg:col-1">
           <ContactRow
             label="Email"
             value={

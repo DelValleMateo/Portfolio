@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 const base =
-  "inline-flex h-12 items-center justify-center gap-2.5 whitespace-nowrap rounded-sm px-[22px] text-[16px] leading-none font-semibold tracking-[-.005em] transition-[background-color,box-shadow,color] duration-150 focus-ring";
+  "inline-flex h-12 items-center justify-center gap-2.5 whitespace-nowrap rounded-full px-6 text-[16px] leading-none font-semibold tracking-[-.005em] transition-[background-color,box-shadow,color,transform] duration-150 focus-ring motion-safe:active:scale-[.98]";
 
 const variants = {
   primary:

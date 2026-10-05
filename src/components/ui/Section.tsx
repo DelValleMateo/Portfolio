@@ -43,9 +43,12 @@ export function SectionHeader({
   lede?: string;
 }) {
   return (
-    <header className="mb-22 grid grid-cols-12 items-end gap-x-6 gap-y-7 max-md:mb-12 max-md:grid-cols-1 max-md:gap-y-4">
+    <header
+      data-reveal
+      className="mb-22 grid grid-cols-12 items-end gap-x-6 gap-y-7 max-md:mb-12 max-md:grid-cols-1 max-md:gap-y-4"
+    >
       <div className="col-span-full flex items-center gap-4 max-md:mb-3">
-        <Label tone="ink">{index}</Label>
+        <Label tone="accent">{index}</Label>
         <span className="h-px flex-1 bg-line" />
         <Label>{tag}</Label>
       </div>

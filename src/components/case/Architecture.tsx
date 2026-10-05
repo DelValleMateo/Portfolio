@@ -21,7 +21,7 @@ function ArchNode({
   return (
     <div
       className={cn(
-        "flex min-w-0 flex-col gap-2.5 rounded-sm bg-surface p-[18px] inset-ring-1 inset-ring-line-strong",
+        "flex min-w-0 flex-col gap-2.5 rounded-md bg-surface p-[18px] inset-ring-1 inset-ring-line-strong",
         className,
       )}
     >
@@ -64,7 +64,7 @@ function Layers({ layers }: { layers: string[] }) {
               className="ml-3 rotate-90 self-start text-ink-3 max-lg:ml-0 max-lg:rotate-0 max-lg:self-center"
             />
           ) : null}
-          <span className="inline-flex h-[26px] items-center rounded-xs px-2 font-mono text-[12px] leading-none text-ink inset-ring-1 inset-ring-line-control">
+          <span className="inline-flex h-[26px] items-center rounded-full px-3 font-mono text-[12px] leading-none text-ink inset-ring-1 inset-ring-line-control">
             {layer}
           </span>
         </Fragment>

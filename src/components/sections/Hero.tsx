@@ -3,6 +3,7 @@ import { OrbitDiagram } from "@/components/graphics/OrbitDiagram";
 import { Telemetry } from "@/components/sections/Telemetry";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { ScrambleText } from "@/components/ui/ScrambleText";
 import { TextLink } from "@/components/ui/TextLink";
 import { labelClass } from "@/components/ui/Text";
 import { cn } from "@/lib/cn";
@@ -32,7 +33,7 @@ export function Hero() {
   const { city, region, country } = site.location;
 
   return (
-    <section id="top" className="relative overflow-hidden">
+    <section id="top" className="relative overflow-hidden max-md:flex max-md:flex-col">
       <div
         aria-hidden="true"
         className="hero-grid pointer-events-none absolute inset-0"
@@ -64,7 +65,7 @@ export function Hero() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-14 -right-32 size-[480px] max-md:-right-[196px] max-md:size-[400px] xl:top-[94px] xl:right-10 xl:size-[640px]"
+        className="pointer-events-none absolute -top-14 -right-32 size-[480px] max-md:relative max-md:order-2 max-md:mx-auto max-md:mb-14 max-md:aspect-square max-md:size-auto max-md:w-[calc(100%-40px)] max-md:max-w-[360px] max-md:inset-auto xl:top-[94px] xl:right-10 xl:size-[640px]"
       >
         <OrbitDiagram className="size-full overflow-visible" />
       </div>
@@ -85,15 +86,18 @@ export function Hero() {
             <span>{country} · Remoto</span>
           </p>
 
-          <h1 className="mb-8 text-display max-md:mb-6 max-md:text-display-m">
-            Mateo
+          <h1
+            aria-label={site.name}
+            className="mb-8 text-display max-md:mb-6 max-md:text-display-m"
+          >
+            <ScrambleText text="Mateo" />
             <br />
-            del Valle
+            <ScrambleText text="del Valle" className="text-ink-3" />
           </h1>
 
-          <p className="mb-4 text-[22px] leading-[1.3] font-medium tracking-[-.01em] text-ink max-md:mb-3.5 max-md:text-[18px]">
+          <p className="mb-4 text-[22px] leading-[1.3] font-semibold tracking-[-.01em] text-ink max-md:mb-3.5 max-md:text-[18px]">
             <span className="max-md:block">{site.role}</span>
-            <span className="max-md:hidden"> · </span>
+            <span className="text-accent max-md:hidden"> · </span>
             <span className="max-md:block">{site.degree}</span>
           </p>
 

@@ -11,18 +11,20 @@
 :root,
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0b0c0e;
-  --surface: #131518;
-  --surface-sunken: #1a1d21;
-  --line: #24282e;
-  --line-strong: #3a4049;
-  --line-control: #646b75;
-  --grid: #171a1e;
-  --ink: #eceef0;
-  --ink-2: #a7adb5;
-  --ink-3: #848b95;
-  --accent: #ff5a1f;
-  --on-accent: #0b0c0e;
+  --bg: #0a0d0f;
+  --surface: #0f1418;
+  --surface-sunken: #151c22;
+  --line: #1f2830;
+  --line-strong: #313d47;
+  --line-control: #647380;
+  --grid: #121a1f;
+  --ink: #e7ecef;
+  --ink-2: #b4bec5;
+  --ink-3: #8a97a0;
+  /* Un solo acento (ámbar) para estados vivos; el coral queda solo para el costo/trade-off. */
+  --accent: #ffb547;
+  --on-accent: #1a1203;
+  --cost: #ff8a6b;
   --elevation: 0 22px 44px -14px rgb(0 0 0 / 0.75);
   --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
 }
@@ -39,8 +41,10 @@
   --ink: #141518;
   --ink-2: #474c54;
   --ink-3: #62676f;
-  --accent: #c23b06;
+  /* Ámbar oscurecido: ≥5:1 sobre las superficies claras y 6:1 con texto blanco encima. */
+  --accent: #8f5300;
   --on-accent: #ffffff;
+  --cost: #b33e1a;
   --elevation: 0 22px 44px -16px rgb(20 21 24 / 0.32);
 }
 
@@ -76,49 +80,52 @@
   --color-ink-3: var(--ink-3);
   --color-accent: var(--accent);
   --color-on-accent: var(--on-accent);
+  --color-cost: var(--cost);
 
   /* Elevación: sombra del elemento que "se levanta" al pasar el mouse (shadow-lift). */
   --shadow-lift: var(--elevation);
 
   /* Las variables --font-* las define next/font en <html> (ver layout.tsx). */
-  --font-sans: var(--font-albert-sans), ui-sans-serif, system-ui, -apple-system,
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
-  --font-mono: var(--font-martian-mono), ui-monospace, "SF Mono", Menlo, Consolas,
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, Consolas,
     monospace;
 
-  /* Radios: precisos, casi rectos. */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  /* Radios: controles en píldora (rounded-full), tarjetas de 24 px. */
+  --radius-xs: 4px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
   --radius-device: 34px;
 
   /* Escala tipográfica. Cada token trae tamaño, interlineado, tracking y peso. */
   --text-display: 112px;
   --text-display--line-height: 0.9;
   --text-display--letter-spacing: -0.045em;
-  --text-display--font-weight: 600;
+  --text-display--font-weight: 700;
   --text-display-m: 56px;
   --text-display-m--line-height: 0.92;
   --text-display-m--letter-spacing: -0.04em;
-  --text-display-m--font-weight: 600;
+  --text-display-m--font-weight: 700;
 
   --text-h1: 72px;
   --text-h1--line-height: 0.95;
-  --text-h1--letter-spacing: -0.04em;
-  --text-h1--font-weight: 600;
+  --text-h1--letter-spacing: -0.045em;
+  --text-h1--font-weight: 700;
   --text-h1-m: 48px;
   --text-h1-m--line-height: 0.95;
   --text-h1-m--letter-spacing: -0.04em;
-  --text-h1-m--font-weight: 600;
+  --text-h1-m--font-weight: 700;
 
   --text-h2: 52px;
   --text-h2--line-height: 1.02;
   --text-h2--letter-spacing: -0.035em;
-  --text-h2--font-weight: 600;
+  --text-h2--font-weight: 700;
   --text-h2-m: 36px;
   --text-h2-m--line-height: 1.05;
   --text-h2-m--letter-spacing: -0.03em;
-  --text-h2-m--font-weight: 600;
+  --text-h2-m--font-weight: 700;
 
   --text-h3: 22px;
   --text-h3--line-height: 1.3;

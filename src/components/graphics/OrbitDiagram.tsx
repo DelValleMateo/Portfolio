@@ -4,7 +4,8 @@ import { OrbitSatellites } from "./OrbitSatellites";
 /**
  * Diagrama orbital del hero: anillo de azimut, tres órbitas, la estación en el
  * centro (Concepción del Uruguay) y tres "satélites", dos con etiqueta:
- * 01 STUGO (el activo, en acento) y 02 MATE ÚNICO.
+ * 01 STUGO (el activo, en acento) y 02 MATE ÚNICO. Sobre el dibujo gira un
+ * barrido de radar y CDU emite un pulso (solo con movimiento permitido).
  *
  * El dibujo fijo (anillo, órbitas, CDU) es de servidor: se calcula al
  * renderizar y no se hidrata. Solo los satélites son un componente de cliente
@@ -87,12 +88,50 @@ export function OrbitDiagram({ className }: { className?: string }) {
         />
       ))}
 
+      {/* barrido de radar: sector de 50° que gira alrededor de CDU (components.css) */}
+      <defs>
+        <linearGradient
+          id="radar-fade"
+          gradientUnits="userSpaceOnUse"
+          x1={C}
+          y1={C - 300}
+          x2="90.2"
+          y2="127.2"
+        >
+          <stop offset="0" style={{ stopColor: "var(--accent)", stopOpacity: 0.2 }} />
+          <stop offset="1" style={{ stopColor: "var(--accent)", stopOpacity: 0 }} />
+        </linearGradient>
+      </defs>
+      <g className="radar-sweep">
+        <path
+          d={`M${C} ${C} L${C} ${C - 300} A300 300 0 0 0 90.2 127.2 Z`}
+          fill="url(#radar-fade)"
+        />
+        <line
+          className="stroke-accent/40"
+          x1={C}
+          y1={C}
+          x2={C}
+          y2={C - 300}
+        />
+      </g>
+
+      {/* pulso que sale de la estación */}
+      <circle className="cdu-ping fill-none stroke-accent" strokeWidth="1.5" cx={C} cy={C} r="30" />
+      <circle
+        className="cdu-ping cdu-ping--late fill-none stroke-accent"
+        strokeWidth="1.5"
+        cx={C}
+        cy={C}
+        r="30"
+      />
+
       {/* estación en el centro */}
       <line className={cls.cross} x1={C - 18} y1={C} x2={C - 8} y2={C} />
       <line className={cls.cross} x1={C + 8} y1={C} x2={C + 18} y2={C} />
       <line className={cls.cross} x1={C} y1={C - 18} x2={C} y2={C - 8} />
       <line className={cls.cross} x1={C} y1={C + 8} x2={C} y2={C + 18} />
-      <circle className={cls.core} cx={C} cy={C} r="3" />
+      <circle className="fill-accent" cx={C} cy={C} r="4" />
       <text className={cls.txt} x={C + 14} y={C - 12}>
         CDU
       </text>
