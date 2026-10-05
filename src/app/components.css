@@ -1,0 +1,165 @@
+/* Estilos de componente que no se expresan bien como utilidades:
+   fondos con degradé y máscara, y las flechas de los diagramas.
+   Todo lo demás está escrito con utilidades de Tailwind en los componentes. */
+
+/* ---------- Hero: cuadrícula de coordenadas (celdas de 120 px) ---------- */
+.hero-grid {
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 120px 120px;
+  background-position: 0 54px, 0 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000 62%);
+  mask-image: linear-gradient(90deg, transparent 30%, #000 62%);
+}
+
+@media (width < 48rem) {
+  .hero-grid {
+    background-size: 48px 48px;
+    background-position: 0 30px, 6px 0;
+    -webkit-mask-image: linear-gradient(200deg, #000 15%, transparent 55%);
+    mask-image: linear-gradient(200deg, #000 15%, transparent 55%);
+  }
+}
+
+/* ---------- Placeholder de captura (solo en desarrollo) ---------- */
+.shot-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px;
+  text-align: center;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center center;
+}
+
+.shot-ph > * {
+  background: var(--surface-sunken);
+  padding: 0 4px;
+}
+
+/* ---------- Arquitectura: conector entre nodos ----------
+   Horizontal en desktop, vertical por debajo de 1024 px.
+   .arch-edge--mu lo corre hacia abajo para alinearlo con los nodos
+   del diagrama de Mate Único. */
+.arch-edge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+}
+
+.arch-edge::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  height: 1px;
+  background: var(--ink-3);
+}
+
+.arch-edge > span {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  padding: 3px 6px;
+  border-radius: var(--radius-xs);
+  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 14px;
+  color: var(--ink);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.arch-edge > .ah {
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid var(--ink-3);
+  border-right: 1px solid var(--ink-3);
+}
+
+.arch-edge > .ah-end {
+  right: 4px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.arch-edge > .ah-start {
+  left: 4px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.arch-edge--mu {
+  padding-top: 52px;
+}
+
+.arch-edge--mu::before {
+  top: calc(50% + 26px);
+}
+
+.arch-edge--mu > .ah {
+  top: calc(50% + 26px);
+}
+
+.arch-edge--mu > span {
+  transform: translateY(-25px);
+  background: transparent;
+  color: var(--ink-2);
+}
+
+@media (width < 64rem) {
+  .arch-edge,
+  .arch-edge--mu {
+    min-height: 64px;
+    padding-top: 0;
+  }
+
+  .arch-edge::before,
+  .arch-edge--mu::before {
+    left: 50%;
+    right: auto;
+    top: 4px;
+    bottom: 4px;
+    width: 1px;
+    height: auto;
+  }
+
+  .arch-edge > .ah,
+  .arch-edge--mu > .ah {
+    left: 50%;
+    right: auto;
+  }
+
+  .arch-edge > .ah-end,
+  .arch-edge--mu > .ah-end {
+    top: auto;
+    bottom: 4px;
+    transform: translateX(-50%) rotate(135deg);
+  }
+
+  .arch-edge > .ah-start,
+  .arch-edge--mu > .ah-start {
+    top: 4px;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+
+  .arch-edge > span {
+    max-width: 80%;
+  }
+
+  .arch-edge--mu > span {
+    transform: none;
+    background: var(--bg);
+  }
+}
